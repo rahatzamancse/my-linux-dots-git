@@ -112,6 +112,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-alias config='/usr/bin/git --git-dir=$HOME/.config/my-dots-git/ --work-tree=$HOME'
-
 figlet 'G U L U'
