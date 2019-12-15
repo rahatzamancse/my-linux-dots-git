@@ -130,3 +130,9 @@ super + !button{1-3}
 
 super + @button{1-3}
 	bspc pointer -u
+
+# Applications I run often
+super + e
+	thunar
+
+
