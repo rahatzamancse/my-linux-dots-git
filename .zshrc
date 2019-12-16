@@ -67,6 +67,7 @@ alias rahat="echo 'Putu'"
 alias fucking='sudo'
 alias ls=lsd
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
+alias rmpclock='sudo rm /var/lib/pacman/db.lck'
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -118,4 +119,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
