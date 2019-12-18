@@ -140,14 +140,7 @@ module-margin= 1
 
 ; Fonts are defined using <font-name>;<vertical-offset>
 
-; font-0 = NotoSans-Regular:size=8;2
-; font-1 = MaterialIcons:size=10
-; font-2 = Termsynu:size=8;-1
-; font-3 = FontAwesome:size=10
 font-0 = "mononoki Nerd Font:size=8;2"
-font-1 = "Typicons:size=20;2"
-font-2 = "xos4 Terminus:size=8;1"
-font-3 = "icomoon\-feather:size=8;3"
 
 ;; Modules
 ; Others: xwindow
@@ -225,16 +218,16 @@ date = %a, %b %d
 time = %l:%M %p
 label = %date% - %time%
 
-format = 🕓 <label>
-; format-font = 3
+format = <label>
+; format-font = 0
 format-foreground = ${color.blue}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/xkeyboard]
 type = internal/xkeyboard
-blacklist-0 = num lock
-blacklist-1 = scroll lock
+blacklist-0 = scroll lock
+; blacklist-1 = num lock
 
 format = <label-layout> <label-indicator>
 format-spacing = 0
@@ -260,9 +253,9 @@ layout-icon-1 = bn;BN
 ; Available tokens:
 ;   %name%
 ;   %icon%
-label-indicator-on-capslock = CAPS
+label-indicator-on-capslock = 
 label-indicator-off-capslock = 
-label-indicator-on-numlock = 
+label-indicator-on-numlock = 
 label-indicator-off-numlock = 
 label-indicator-on-scrolllock = 
 label-indicator-off-scrolllock = 
@@ -277,31 +270,33 @@ label-indicator-off-scrolllock =
 [module/powermenu]
 type = custom/menu
 
+; For sudo shell
+; echo <pass> | sudo do-something
+
 expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = 拉
 label-open-foreground = ${color.blue}
-label-close =  cancel
+label-close = 
 label-close-foreground = ${color.blue}
 label-separator = |
 label-separator-foreground = ${color.blue}
 
-menu-0-0 = reboot
+menu-0-0 = Reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = shut down
+menu-0-1 = Power off
 menu-0-1-exec = menu-open-2
 
-menu-1-0 = cancel
+menu-1-0 = 
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = reboot
-; echo <pass> | sudo do-something
+menu-1-1 = Reboot
+menu-1-1-exec = Reboot
 
-menu-2-0 = power off
+menu-2-0 = Power off
 menu-2-0-exec = poweroff
-menu-2-1 = cancel
+menu-2-1 = 
 menu-2-1-exec = menu-open-0
 
 ;-----------------------------------------------
@@ -310,12 +305,12 @@ menu-2-1-exec = menu-open-0
 type = internal/memory
 interval = 2
 
-format-prefix = " "
-format-prefix-foreground = ${color.forground-alt}
+; format-prefix = " "
+; format-prefix-foreground = ${color.forground-alt}
 format = <label> <ramp-used>
 
 ; format-underline = #4bffdc
-label = R %gb_used%
+label =  %gb_used%
 
 ; Only applies if <ramp-used> is used
 ramp-used-0 = ▁
@@ -344,15 +339,17 @@ enable-scroll = true
 ;   <label> (default)
 ;   <ramp>
 ;   <bar>
-format = <label> <ramp>
+format = <ramp> <label>
 label = %percentage%%
 
 ; Only applies if <ramp> is used
-ramp-0 = 🌕
-ramp-1 = 🌔
-ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
 
 ; bar-width = 10
 ; bar-indicator = |
@@ -365,7 +362,8 @@ ramp-4 = 🌑
 ; bar-empty-font = 2
 ; bar-empty-foreground = ${color.forground-alt}
 
-;; -------------------------------------------------------
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 [module/xwindow]
 type = internal/xwindow
 
@@ -401,7 +399,7 @@ label = %temperature-c%
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label-warn = %temperature-c% Warning!
+label-warn = %temperature-c% 
 label-warn-foreground = #f00
 
 ; Requires the <ramp> tag
@@ -416,7 +414,7 @@ ramp-3 = D
 type = internal/cpu
 interval = 5
 
-format = <ramp-coreload>
+format = 龍 <ramp-coreload>
 ramp-coreload-0 = %{F#00FFAB}▁
 ramp-coreload-1 = %{F#00FFAB}▂
 ramp-coreload-2 = %{F#f8ff00}▃
@@ -462,25 +460,13 @@ format-volume = <ramp-volume> <label-volume>
 ; Available tokens:
 ;   %percentage% (default)
 ;   %decibels% (unreleased)
-label-muted = 🔇 muted
+label-muted = 婢
 label-muted-foreground = #666
 
 ; Only applies if <ramp-volume> is used
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
-
-; Only applies if <ramp-volume> is used
-; ramp-volume-0 = %{F#00ff01}
-; ramp-volume-1 = %{F#00ff01}
-; ramp-volume-2 = %{F#00FFAB}
-; ramp-volume-3 = %{F#00FFAB}
-; ramp-volume-4 = %{F#f8ff00}
-; ramp-volume-5 = %{F#f8ff00}
-; ramp-volume-6 = %{F#ff5200}
-; ramp-volume-7 = %{F#ff5200}
-; ramp-volume-8 = %{F#ff00a8}
-; ramp-volume-9 = %{F#ff00a8}
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
 
 ; Right and Middle click (unreleased)
 click-right = pavucontrol &
@@ -546,42 +532,38 @@ label-charging = %percentage%% %consumption%W
 ;   %consumption% (shows current charge rate in watts)
 label-discharging = %percentage%% %consumption%W
 
-label-full = FULL
+label-full = 
 ; label-full-foreground = ${color.wr}
 
 ; Only applies if <ramp-capacity> is used
-ramp-capacity-0 = %{F#ff0000}
-ramp-capacity-1 = %{F#ff00a8}
-ramp-capacity-2 = %{F#ff00a8}
-ramp-capacity-3 = %{F#f8ff00}
-ramp-capacity-4 = %{F#f8ff00}
-ramp-capacity-5 = %{F#f8ff00}
-ramp-capacity-6 = %{F#00ffAB}
-ramp-capacity-7 = %{F#00ffAB}
-ramp-capacity-8 = %{F#00ffAB}
-ramp-capacity-9 = %{F#00ff00}
+ramp-capacity-0 = %{F#ff0000}
+ramp-capacity-1 = %{F#ff00a8}
+ramp-capacity-2 = %{F#ff00a8}
+ramp-capacity-3 = %{F#f8ff00}
+ramp-capacity-4 = %{F#f8ff00}
+ramp-capacity-5 = %{F#f8ff00}
+ramp-capacity-6 = %{F#00ffAB}
+ramp-capacity-7 = %{F#00ffAB}
+ramp-capacity-8 = %{F#00ffAB}
 
 ; Only applies if <animation-charging> is used
-animation-charging-0 = %{F#00ff01}
-animation-charging-1 = %{F#00ff01}
-animation-charging-2 = %{F#f8ff00}
-animation-charging-3 = %{F#f8ff00}
-animation-charging-4 = %{F#00ffAB}
-animation-charging-5 = %{F#00ffAB}
-animation-charging-6 = %{F#ff5200}
-animation-charging-7 = %{F#ff5200}
-animation-charging-8 = %{F#ff00a8}
-animation-charging-9 = %{F#ff00a8}
+animation-charging-0 = %{F#00ff01}
+animation-charging-1 = %{F#00ff01}
+animation-charging-2 = %{F#f8ff00}
+animation-charging-3 = %{F#f8ff00}
+animation-charging-4 = %{F#00ffAB}
+animation-charging-5 = %{F#00ffAB}
+animation-charging-6 = %{F#ff00a8}
 animation-charging-framerate = 750
 
 ; Only applies if <animation-discharging> is used
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-3 = 
-animation-discharging-4 = 
+; animation-discharging-0 = 
+; animation-discharging-1 = 
+; animation-discharging-2 = 
+; animation-discharging-3 = 
+; animation-discharging-4 = 
 ; Framerate in milliseconds
-animation-discharging-framerate = 500
+; animation-discharging-framerate = 500
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -736,7 +718,7 @@ unknown-as-up = false
 ; Available tags:
 ;   <label-connected> (default)
 ;   <ramp-signal>
-format-connected = %{A1:/usr/bin/rofi-wifi-menu:}<ramp-signal> <label-connected>%{A}
+format-connected = %{A1:/usr/bin/rofi-wifi-menu:}<label-connected>%{A}
 
 ; Available tags:
 ;   <label-disconnected> (default)
@@ -758,20 +740,20 @@ format-packetloss = <animation-packetloss> <label-connected>
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
 
-label-connected = %upspeed% %downspeed% %essid%
-label-disconnected = %{F#ff00a8} No-NET
+label-connected =  %upspeed%  %downspeed% %signal%|%essid%
+label-disconnected = %{F#ff00a8}睊
 
-ramp-signal-0 = %{F#ff00a8}😱
-ramp-signal-1 = %{F#f8ff00}😠
-ramp-signal-2 = %{F#00FFAB}😒
-ramp-signal-3 = %{F#00FFAB}😊
-ramp-signal-4 = %{F#00FFAB}😃
-ramp-signal-5 = %{F#00FFAB}😈
+; ramp-signal-0 = %{F#ff00a8}😱
+; ramp-signal-1 = %{F#f8ff00}😠
+; ramp-signal-2 = %{F#00FFAB}😒
+; ramp-signal-3 = %{F#00FFAB}😊
+; ramp-signal-4 = %{F#00FFAB}😃
+; ramp-signal-5 = %{F#00FFAB}😈
 
 ; Only applies if <animation-packetloss> is used
-animation-packetloss-0 = p0
+animation-packetloss-0 = loss
 animation-packetloss-0-foreground = #ff0000
-animation-packetloss-1 = p1
+animation-packetloss-1 = %{F#f00}loss
 animation-packetloss-1-foreground = #ff0000
 ; Framerate in milliseconds
 animation-packetloss-framerate = 500
@@ -815,6 +797,6 @@ format-unmounted = <label-unmounted>
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted = %used%/%total%
+label-mounted =  %used%/%total%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${color.forground}
