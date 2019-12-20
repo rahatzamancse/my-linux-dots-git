@@ -119,3 +119,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+USB_LOC=/run/media/prapti

@@ -41,6 +41,10 @@ nitrogen 1.6.1-2
 nmap 7.80-1
 obs-studio 24.0.4-1
 ookla-speedtest-bin 1.0.0-3
+ocrfeeder
+tesseract
+tesserect-data-ben
+tesserect-data-eng
 pamac-gtk 9.2.0-1
 playonlinux 4.3.4-1
 picom
