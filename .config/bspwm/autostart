@@ -1,0 +1,56 @@
+## run_once is a script in /usr/bin that prevents running script if it is running already
+
+## Load appearance settings
+# xsetroot -cursor_name left_ptr &
+# export GTK2_RC_FILES="$HOME/.config/.gtkrc-2.0" &
+# xrdb merge .Xresources &
+
+## systemd automount removable drives
+udiskie &
+
+## clipboard manager for rofi
+greenclip daemon &
+
+## formerly compton compositor
+picom &
+
+## Notify about package updates
+update-checker 7200 &
+
+## Polkit agent
+/usr/lib/mate-polkit/polkit-mate-authenticator-agent-1 &
+
+## Gnome keyring
+gnome-keyring-daemon &
+
+## Notification manager
+/usr/lib/mate-notification-daemon/mate-notification-daemon &
+
+## Welcom message
+sleep 1 && notify-send "Welcome Back 1nsane$Shadow" "Also to you GULU" &
+
+## Keyboard shortcuts
+sxhkd &
+
+## Wallpaper manager
+betterlockscreen -w
+
+## Autolock
+xidlehook \
+	`# Don't lock when there's a fullscreen application` \
+	--not-when-fullscreen \
+	`# Don't lock when there's audio playing` \
+	--not-when-audio \
+	`# Dim the screen after 60 seconds, undim if user becomes active` \
+	--timer 120 \
+	'echo $(xbacklight -get) > /tmp/brightness.dat; xbacklight -set 1' \
+	'[ -f /tmp/brightness.dat ] && xbacklight -set $(cat /tmp/brightness.dat) || xbacklight -set 50' \
+	`# Undim & lock after 10 more seconds` \
+	--timer 10 \
+	'xset dpms force off; betterlockscreen -l' \
+	'[ -f /tmp/brightness.dat ] && xbacklight -set $(cat /tmp/brightness.dat) || xbacklight -set 50' &
+	# `# Finally, suspend an hour after it locks` \
+	##--timer 3600` \
+	##'systemctl suspend' \
+	##''
+
