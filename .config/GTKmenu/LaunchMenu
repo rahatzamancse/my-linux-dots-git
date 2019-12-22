@@ -1,6 +1,10 @@
-item = Applications
+item = Run
 cmd = dboxrun
 icon = /usr/share/icons/Adwaita/scalable/actions/system-run-symbolic.svg
+
+item = Applications
+cmd = morc_menu
+icon = /usr/share/icons/Adwaita/scalable/actions/open-menu-symbolic.svg
 
 item = Find
 cmd = rofi-finder.sh
@@ -15,7 +19,7 @@ cmd = default-browser
 icon = /usr/share/icons/Adwaita/scalable/apps/web-browser-symbolic.svg
 
 item = Files
-cmd = pcmanfm
+cmd = spacefm
 icon = /usr/share/icons/Adwaita/scalable/apps/system-file-manager-symbolic.svg
 
 item = Editor

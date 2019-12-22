@@ -89,6 +89,9 @@ source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring
 # Use fish like autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# reminds you that you should use one of your existing aliases
+source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+
 # bind UP and DOWN arrow keys to history substring search
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up

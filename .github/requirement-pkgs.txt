@@ -36,6 +36,7 @@ lutris 0.5.4-1
 lxappearance
 marker 2019.11.06-1
 masterpdfeditor-free 4.3.89-1
+mygtkmenui
 neofetch 6.1.0-1
 nethogs 0.8.5-3
 nitrogen 1.6.1-2

@@ -1,9 +1,9 @@
 ## run_once is a script in /usr/bin that prevents running script if it is running already
 
 ## Load appearance settings
-# xsetroot -cursor_name left_ptr &
-# export GTK2_RC_FILES="$HOME/.config/.gtkrc-2.0" &
-# xrdb merge .Xresources &
+xsetroot -cursor_name left_ptr &
+export GTK2_RC_FILES="$HOME/.config/.gtkrc-2.0" &
+xrdb merge .Xresources &
 
 ## systemd automount removable drives
 udiskie &
@@ -18,13 +18,15 @@ picom &
 update-checker 7200 &
 
 ## Polkit agent
-/usr/lib/mate-polkit/polkit-mate-authenticator-agent-1 &
+# /usr/lib/mate-polkit/polkit-mate-authenticator-agent-1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 ## Gnome keyring
 gnome-keyring-daemon &
 
 ## Notification manager
-/usr/lib/mate-notification-daemon/mate-notification-daemon &
+# /usr/lib/mate-notification-daemon/mate-notification-daemon &
+dbus-launch gsettings set org.mate.NotificationDaemon theme 'slider' && sed -i '/gsettings/d' ~/.config/bspwm/autostart &
 
 ## Welcom message
 sleep 1 && notify-send "Welcome Back 1nsane$Shadow" "Also to you GULU" &
@@ -33,7 +35,7 @@ sleep 1 && notify-send "Welcome Back 1nsane$Shadow" "Also to you GULU" &
 sxhkd &
 
 ## Wallpaper manager
-betterlockscreen -w
+# betterlockscreen -w
 
 ## Autolock
 xidlehook \
@@ -53,4 +55,5 @@ xidlehook \
 	##--timer 3600` \
 	##'systemctl suspend' \
 	##''
+
 

@@ -7,8 +7,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
 
+call plug#begin('~/.vim/plugged')
 " Easily align between equals in equations
 " Plug 'junegunn/vim-easy-align'
 

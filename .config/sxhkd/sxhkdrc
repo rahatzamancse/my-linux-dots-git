@@ -190,13 +190,20 @@ super + button{4,5}
 
 # if clicked on desktop, resize windows
 ~button1
-	DidIClickDesktop.sh && gapgrab	
+	eval $(xdotool getmouselocation --shell) && \
+	[ $WINDOW -eq 359 ] && gapgrab
+	# DidIClickDesktop.sh does not work due to a bug on xdotools returning wrong windowid
+	# DidIClickDesktop.sh && gapgrab	
 
 ~button2
-	DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/BspwmDesktopMenui
+	eval $(xdotool getmouselocation --shell) && \
+	[ $WINDOW -eq 359 ] && mygtkmenui -- .config/GTKmenu/BspwmDesktopMenui
+	# DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/BspwmDesktopMenui
 
 ~button3
-	DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/LaunchMenu
+	eval $(xdotool getmouselocation --shell) && \
+	[ $WINDOW -eq 359 ] && mygtkmenui -- .config/GTKmenu/LaunchMenu
+	# DidIClickDesktop.sh && mygtkmenui -- .config/GTKmenu/LaunchMenu
 
 # Applications I run often
 super + e
@@ -206,5 +213,7 @@ super + a
 	google-chrome-stable
 
 Print
-    sleep 0.2; \
-    scrot -s $HOME/'Pictures/Screenshots/%Y-%m-%d_%H%M%S-$wx$h_scrot.png'
+	sleep 0.2; \
+	scrot -s $HOME/'Pictures/Screenshots/%Y-%m-%d_%H%M%S-$wx$h_scrot.png'
+	# flameshot gui
+
